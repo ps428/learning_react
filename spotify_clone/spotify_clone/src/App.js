@@ -48,8 +48,15 @@ function App() {
           user: user
           //or just user would be enough, but to make it more understandable
         })
+      });
 
-      })
+      spotify.getUserPlaylists().then((playlists) => {
+        dispatch({
+          type: "SET_PLAYLISTS",
+          playlists: playlists
+        })
+      });
+
     }
 
     // console.log("Token:", token);
