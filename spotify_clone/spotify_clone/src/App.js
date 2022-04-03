@@ -3,13 +3,18 @@ import './App.css';
 import Login from './Private/Login';
 import { getTokenFromUrl } from "./Public/spotify";
 import SpotifyWebApi from "spotify-web-api-js"
+import Player  from "./Private/Player";
+import { useDataLayerValue } from "./DataLayer";
 
 const spotify = new SpotifyWebApi();
 
 function App() {
 
   //state wali cheez now, making variables in react
-  const [token, setToken] = useState(null);
+  // const [token, setToken] = useState(null);
+
+  //dispatch as special gun to shoot at data layer
+  const [{user, token},dispatch] = useDataLayerValue();
 
   //run code based on a given condition
   useEffect(() => {
@@ -22,20 +27,40 @@ function App() {
     const _token = hash.access_token;
 
     if (_token) {
-      setToken(_token);
+
+      //will replace this with pushign this value to data layer using dispatch
+      // setToken(_token);
+
+      dispatch({
+        type: "SET_TOKEN",
+        token: _token,
+      })
+
 
       spotify.setAccessToken(_token);
 
       spotify.getMe().then(user => {
-        console.log("USER Details: ", user);
+        // //printing user directly from spotify call
+        // console.log("USER Details: ", user);
+
+        dispatch({
+          type: "SET_USER",
+          user: user
+          //or just user would be enough, but to make it more understandable
+        })
+
       })
     }
 
-    console.log("Token:", token);
+    // console.log("Token:", token);
     // to run only once, put empty brackets down here [] ,
     // if we want to run is such that when the name variable changes, use [name]
     // if we want to run is such that when the name, age, gender variables change, use [name, age, gender]
   }, []);
+
+  //printing user directly from data layer
+  // console.log("USER Details: ", user);
+  // console.log("TOKEN: ",token);
 
 
   return (
@@ -43,8 +68,8 @@ function App() {
     <div className="app">
       {
         token ? (
-          <h1>Welcome</h1>
-          // <Player/>
+          // <h1>Welcome</h1>
+          <Player spotify={spotify}/>
         ) : (
           <Login/>
         )
