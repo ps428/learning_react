@@ -26,12 +26,13 @@ function Sidebar() {
             {/* Now we want playlists to come here like this: */}
             <SidebarOptions title="Rock" />
             <SidebarOptions title="Pop" />
-
-            {/* {playlists?.items?.map((playlist) => (
+            
+            {playlists?.items?.map((playlist) => (
                 <SidebarOptions title={playlist.name} />
-            ))} */}
-        </div>
-    )
+                // console.log("hi")
+            ))}
+            </div>
+    );
 }
 
-export default Sidebar
+export default Sidebar;
