@@ -3,7 +3,7 @@
     display: flex;
     justify-content: space-between;
     bottom: 0;
-    height: 0.2;
+    height: 0.1;
     /* not 100% width as there was some ui glitch with that and right footer was 
     beyond the page, thus using 97% */
     width: 97%;
@@ -64,4 +64,10 @@
     justify-content: space-between;
     align-items: center;
     color: white;
+}
+
+.footer__songImage{
+    padding: 5px;
+    width: 60px;
+    height: 60px;
 }

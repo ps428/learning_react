@@ -7,7 +7,7 @@ import Sidebar from './Sidebar';
 const Player = ({ spotify }) => {
     return (
         <div className='player'>
-            <div className='player_body'>
+            <div className='player__body'>
                 {/* Sidebar */}
                 <Sidebar/>
                 {/* Body */}

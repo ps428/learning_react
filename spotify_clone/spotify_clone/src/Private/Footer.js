@@ -6,20 +6,17 @@ import SkipNextIcon from "@material-ui/icons/SkipNext";
 import ShuffleIcon from "@material-ui/icons/Shuffle";
 import RepeatIcon from "@material-ui/icons/Repeat";
 import VolumeDownIcon from "@material-ui/icons/VolumeDown";
-import PauseCircleOutlineIcon from "@material-ui/icons/PauseCircleOutline";
 import PlaylistPlayIcon from "@material-ui/icons/PlaylistPlay";
 import { Grid, Slider } from "@material-ui/core";
-import { useDataLayerValue } from '../DataLayer';
 
 
 function Footer() {
-  const [{ token, item, playing }, dispatch] = useDataLayerValue();
 
   return (
     <div className='footer'>
       <div className='footer__left'>
         {/* Album and song details */}
-        <img src="" alt="album_image" />
+        <img className='footer__songImage' src="https://i9.ytimg.com/s_p/OLAK5uy_lETFVJpMIzAv8UCcYN6AZd7KLFaq2tRlc/mqdefault.jpg?sqp=CJC2spIGir7X7AMGCPuzy40G&rs=AOn4CLA7FcRVokJPnHFf3XZVNBnzG2rNlg&v=1639111163" alt="album_image" />
         <div className='footer__songInfo'>
           <h4>Ek Raat</h4>
           <p>Vilen</p>
